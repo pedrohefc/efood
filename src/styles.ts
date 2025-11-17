@@ -1,0 +1,34 @@
+import styled, { createGlobalStyle } from 'styled-components'
+
+export const cores = {
+  brancoBody: '#FFF8F2',
+  brancoTag: '#FFEBD9',
+  branco: '#FFFFFF',
+  rosa: '#E66767'
+}
+
+export const Globalcss = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: ${cores.brancoBody};
+  }
+
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+`
+
+export const Container = styled.div`
+  max-width: 1366px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+`
