@@ -10,6 +10,9 @@ export const Card = styled.div`
 
   img:first-child {
     display: block;
+    width: 472px;
+    height: 217px;
+    object-fit: cover;
   }
 `
 
@@ -28,6 +31,7 @@ export const CardTexts = styled.div`
   border-style: solid;
   border-color: ${cores.rosa};
   padding: 8px;
+  height: 181px;
 `
 export const TitleLogo = styled.div`
   display: flex;

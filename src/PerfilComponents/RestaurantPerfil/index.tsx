@@ -4,17 +4,26 @@ type Props = {
   image: string
   title: string
   description: string
-  button: string
+  onButtonClick: () => void
 }
 
-const RestaurantPerfil = ({ image, title, description, button }: Props) => (
+const RestaurantPerfil = ({
+  image,
+  title,
+  description,
+  onButtonClick
+}: Props) => (
   <Card>
     <SubCard>
       <img src={image} alt="Pizza" />
       <div>
         <Title>{title}</Title>
-        <Paragraph>{description}</Paragraph>
-        <Button>{button}</Button>
+        <Paragraph>
+          {description.length > 120
+            ? description.slice(0, 120) + '...'
+            : description}
+        </Paragraph>
+        <Button onClick={onButtonClick}>Mais detalhes</Button>
       </div>
     </SubCard>
   </Card>

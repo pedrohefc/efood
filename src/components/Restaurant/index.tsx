@@ -5,28 +5,29 @@ import * as S from './styles'
 import { Link } from 'react-router-dom'
 
 type Props = {
-  image: string
-  infos: string[]
+  id: number
   title: string
+  destacado?: boolean
+  tipo: string
+  image: string
   grade: number
   description: string
-  button: string
 }
 
 const Restaurant = ({
   image,
-  infos,
   title,
   grade,
   description,
-  button
+  tipo,
+  destacado,
+  id
 }: Props) => (
   <S.Card>
     <img src={image} alt={title} />
     <S.CardTags>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
+      {destacado && <Tag>Destaque da semana</Tag>}
+      <Tag>{tipo}</Tag>
     </S.CardTags>
     <S.CardTexts>
       <S.TitleLogo>
@@ -35,9 +36,13 @@ const Restaurant = ({
           <span>{grade}</span> <img src={estrela} alt="" />
         </div>
       </S.TitleLogo>
-      <S.Paragraph>{description}</S.Paragraph>
-      <Link to={'/Perfil'}>
-        <Button>{button}</Button>
+      <S.Paragraph>
+        {description.length > 190
+          ? description.slice(0, 190) + '...'
+          : description}
+      </S.Paragraph>
+      <Link to={`/Perfil/${id}`}>
+        <Button>Saiba mais</Button>
       </Link>
     </S.CardTexts>
   </S.Card>

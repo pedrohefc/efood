@@ -1,29 +1,90 @@
+import { useState } from 'react'
 import RestaurantPerfil from '../RestaurantPerfil'
-import { Container, List } from './styles'
+import {
+  CloseButton,
+  Container,
+  List,
+  Modal,
+  ModalImg,
+  ModalImgText,
+  ModalText,
+  ModalTitle,
+  ModalWrapper,
+  NewButton
+} from './styles'
+import close from '../../assets/images/close1.png'
 
-import RestaurantsPerfilModel from '../../models/restaurantPerfil'
+import { Restaurant1 } from '../../pages/Home'
 
 type Props = {
-  restaurantsPerfil: RestaurantsPerfilModel[]
+  restaurantsPerfil: Restaurant1[]
 }
 
-const RestaurantListPerfil = ({ restaurantsPerfil }: Props) => (
-  <Container>
-    <div className="container">
-      <List>
-        {restaurantsPerfil.map((item2) => (
-          <li key={item2.id}>
-            <RestaurantPerfil
-              image={item2.image}
-              title={item2.title}
-              description={item2.description}
-              button={item2.button}
+const RestaurantListPerfil = ({ restaurantsPerfil }: Props) => {
+  const [modalEstaAberto, setModalEstaAberto] = useState(false)
+  const [itemSelecionado, setItemSelecionado] = useState<
+    Restaurant1['cardapio'][0] | null
+  >(null)
+
+  const formataPreco = (preco: number) => {
+    return preco.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    })
+  }
+
+  return (
+    <>
+      <Container>
+        <div className="container">
+          <List>
+            {restaurantsPerfil.map((restaurante) =>
+              restaurante.cardapio.map((item) => (
+                <li key={item.id}>
+                  <RestaurantPerfil
+                    image={item.foto}
+                    title={item.nome}
+                    description={item.descricao}
+                    onButtonClick={() => {
+                      setItemSelecionado(item)
+                      setModalEstaAberto(true)
+                    }}
+                  />
+                </li>
+              ))
+            )}
+          </List>
+        </div>
+      </Container>
+      {itemSelecionado && (
+        <ModalWrapper className={modalEstaAberto ? 'visivel' : ''}>
+          <div onClick={() => setModalEstaAberto(false)} className="overlay" />
+          <Modal className="container">
+            <CloseButton
+              onClick={() => setModalEstaAberto(false)}
+              src={close}
+              alt=""
             />
-          </li>
-        ))}
-      </List>
-    </div>
-  </Container>
-)
+            <ModalImgText>
+              <ModalImg src={itemSelecionado.foto} alt="Imagem pizza" />
+              <ModalText>
+                <ModalTitle>{itemSelecionado.nome}</ModalTitle>
+                <p>{itemSelecionado.descricao}</p>
+                {itemSelecionado.porcao.length === 8 ? (
+                  <p>Serve: {itemSelecionado.porcao}</p>
+                ) : (
+                  <p>Serve: de {itemSelecionado.porcao}</p>
+                )}
+                <NewButton>
+                  Adicionar ao carrinho - {formataPreco(itemSelecionado.preco)}
+                </NewButton>
+              </ModalText>
+            </ModalImgText>
+          </Modal>
+        </ModalWrapper>
+      )}
+    </>
+  )
+}
 
 export default RestaurantListPerfil

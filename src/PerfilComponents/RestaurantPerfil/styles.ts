@@ -3,7 +3,14 @@ import { cores } from '../../styles'
 
 export const Card = styled.div`
   width: 320px;
+  height: 338px;
   background-color: ${cores.rosa};
+
+  img {
+    width: 304px;
+    height: 167px;
+    object-fit: cover;
+  }
 `
 
 export const SubCard = styled.div`

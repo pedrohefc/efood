@@ -36,4 +36,5 @@ export const Title1 = styled.h1`
   padding-bottom: 32px;
   font-weight: 900;
   font-style: black;
+  font-size: 32px;
 `

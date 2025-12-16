@@ -12,6 +12,7 @@ export const Globalcss = createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Roboto, sans-serif;
   }
 
   body {
@@ -30,5 +31,4 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0;
   text-decoration: none;
-  font-family: Roboto, sans-serif;
 `
