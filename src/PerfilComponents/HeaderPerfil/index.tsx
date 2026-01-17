@@ -1,9 +1,9 @@
-import { HeaderBar, List, MenuNav } from './styles'
-import logo from '../../assets/images/logo.png'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import logo from '../../assets/images/logo.png'
 import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/cart'
+import { HeaderBar, List, MenuNav } from './styles'
 
 const HeaderPerfil = () => {
   const { items } = useSelector((state: RootReducer) => state.cart)
