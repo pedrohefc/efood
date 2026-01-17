@@ -17,6 +17,10 @@ export const List = styled.ul`
   list-style: none;
   position: relative;
 
+  li {
+    cursor: pointer;
+  }
+
   img {
     margin-left: 36%;
   }

@@ -1,19 +1,12 @@
-import { useEffect, useState } from 'react'
 import BannerPerfil from '../../PerfilComponents/BannerPerfil'
 import HeaderPerfil from '../../PerfilComponents/HeaderPerfil'
 import RestaurantListPerfil from '../../PerfilComponents/RestaurantListPerfil'
 import { useParams } from 'react-router-dom'
-import { Restaurant1 } from '../Home'
+import { useGetRestauranteByIdQuery } from '../../services/api'
 
 const Perfil = () => {
   const { id } = useParams()
-  const [cardapio, setCardapio] = useState<Restaurant1 | null>(null)
-
-  useEffect(() => {
-    fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then(setCardapio)
-  }, [id])
+  const { data: cardapio } = useGetRestauranteByIdQuery(id!)
 
   return (
     <div>

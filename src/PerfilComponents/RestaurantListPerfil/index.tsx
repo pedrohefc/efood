@@ -15,6 +15,9 @@ import {
 import close from '../../assets/images/close1.png'
 
 import { Restaurant1 } from '../../pages/Home'
+import { open, add } from '../../store/reducers/cart'
+import { useDispatch } from 'react-redux'
+import formataPreco from '../../utils/formataPreço'
 
 type Props = {
   restaurantsPerfil: Restaurant1[]
@@ -26,11 +29,10 @@ const RestaurantListPerfil = ({ restaurantsPerfil }: Props) => {
     Restaurant1['cardapio'][0] | null
   >(null)
 
-  const formataPreco = (preco: number) => {
-    return preco.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    })
+  const dispatch = useDispatch()
+
+  const openCart = () => {
+    dispatch(open())
   }
 
   return (
@@ -75,7 +77,13 @@ const RestaurantListPerfil = ({ restaurantsPerfil }: Props) => {
                 ) : (
                   <p>Serve: de {itemSelecionado.porcao}</p>
                 )}
-                <NewButton>
+                <NewButton
+                  onClick={() => {
+                    dispatch(add(itemSelecionado))
+                    openCart()
+                    setModalEstaAberto(false)
+                  }}
+                >
                   Adicionar ao carrinho - {formataPreco(itemSelecionado.preco)}
                 </NewButton>
               </ModalText>
