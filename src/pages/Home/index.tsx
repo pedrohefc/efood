@@ -1,6 +1,5 @@
 import RestaurantList from '../../components/RestaurantList'
 import Header from '../../components/Header'
-import { useEffect, useState } from 'react'
 import { useGetRestaurantesQuery } from '../../services/api'
 
 export type Restaurant1 = {
