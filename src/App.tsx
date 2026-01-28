@@ -2,7 +2,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Footer from './components/Footer'
 import { Container, Globalcss } from './styles'
 import Rotas from './routes'
-import Cart from './components/Cart'
+import Cart from './components/CartComponents/Cart'
 import { Provider } from 'react-redux'
 import { store } from './store'
 

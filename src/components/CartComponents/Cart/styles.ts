@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
-import { ButtonLink } from '../Button/styles'
+import { cores } from '../../../styles'
+import { ButtonLink } from '../../Button/styles'
 
 export const Overlay = styled.div`
   position: absolute;

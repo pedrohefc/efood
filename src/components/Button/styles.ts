@@ -10,4 +10,14 @@ export const ButtonLink = styled.button`
   display: inline-block;
   border: none;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 `
