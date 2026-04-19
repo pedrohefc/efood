@@ -4,7 +4,7 @@ import { Restaurant1 } from '../pages/Home'
 const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api-ebac.vercel.app/api/efood'
+    baseUrl: 'https://http://localhost:8080'
   }),
   endpoints: (builder) => ({
     getRestaurantes: builder.query<Restaurant1[], void>({
