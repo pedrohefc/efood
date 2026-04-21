@@ -4,7 +4,7 @@ import { Restaurant1 } from '../pages/Home'
 const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://http://localhost:8080'
+    baseUrl: 'https://estudos-backend-g9a1.onrender.com'
   }),
   endpoints: (builder) => ({
     getRestaurantes: builder.query<Restaurant1[], void>({
